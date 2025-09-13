@@ -12,20 +12,15 @@ let multiplication = false;
 let division = false;
 
 function operation(x, y, operator) {
-    if (operator === "+") {
-        return x + y;
-    }
-
-    if (operator === "-") {
-        return x - y;
-    }
-
-    if (operator === "x") {
-        return x * y;
-    }
-
-    if (operator === "÷") {
-        return x / y;
+    switch (operator) {
+        case "+":
+            return x + y;
+        case "-":
+            return x - y;
+        case "x":
+            return x * y;
+        case "÷":
+            return x / y;
     }
 }
 
@@ -35,7 +30,6 @@ function resetOperations() {
     multiplication = false;
     division = false;
 }
-
 
 numberedButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -100,6 +94,8 @@ operatorButtons.forEach(button => {
                 memory = operation(a, b, "÷")
             }
             screen.textContent = memory;
+            memory = 0;
+            resetOperations();
         }
 
         if (button.querySelector("span").textContent === "+/-") {
